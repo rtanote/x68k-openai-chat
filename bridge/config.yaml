@@ -1,0 +1,26 @@
+# X68000 OpenAI Chat Bridge Configuration
+
+serial:
+  # Serial port for communication with X68000
+  # For com0com virtual pair: use COM11 when XM6 uses COM10
+  # For real hardware: use COM port connected to X68000
+  port: COM11
+  baud_rate: 9600
+
+openai:
+  # API key - use environment variable for security
+  # Set OPENAI_API_KEY environment variable before running
+  api_key: ${OPENAI_API_KEY}
+
+  # Model to use for chat completions
+  model: gpt-4o-mini
+
+  # Maximum tokens in response
+  max_tokens: 1024
+
+# System prompt for the AI assistant
+system_prompt: |
+  You are a helpful assistant running on a vintage X68000 computer from 1987.
+  Keep your responses concise due to the limited display capabilities of the system.
+  The user may write in Japanese (Shift_JIS encoding) or English.
+  Respond in the same language as the user's message.

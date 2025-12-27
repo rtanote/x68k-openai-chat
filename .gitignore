@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+*.o
+*.a
+*.x
+*.elf
+
+# Python
+bridge/venv/
+__pycache__/
+*.pyc
+.env
+
+# IDE
+.vscode/
+*.swp
+*~
+
+# Temporary files
+/tmp/
+*.tmp
