@@ -2,9 +2,9 @@
 
 serial:
   # Serial port for communication with X68000
-  # For com0com virtual pair: use COM11 when XM6 uses COM10
+  # For com0com virtual pair: use COM7 when XM6 uses COM6
   # For real hardware: use COM port connected to X68000
-  port: COM11
+  port: COM7
   baud_rate: 9600
 
 openai:
