@@ -1,0 +1,15 @@
+[Unit]
+Description=X68000 OpenAI Chat Bridge
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/x68k-openai-chat/bridge
+EnvironmentFile=/home/pi/.x68k-chat-env
+ExecStart=/home/pi/.pyenv/versions/3.9.18/bin/python /home/pi/x68k-openai-chat/bridge/bridge.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
