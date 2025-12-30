@@ -38,4 +38,5 @@ X68000 ──RS-232C──> Bridge (RPi/ESP32) ──HTTPS──> OpenAI API
 
 ## ライセンス
 
-TBD
+This project is licensed under the MIT License.
+See the LICENSE file for details.
