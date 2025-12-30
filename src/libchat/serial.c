@@ -32,11 +32,19 @@ static int baud_to_code(int baud_rate)
 
 /*
  * Initialize serial port
+ *
+ * If baud_rate is 0, use existing SWITCH.X settings.
+ * Otherwise, call SET232C to configure the port.
  */
 int serial_init(int baud_rate)
 {
     int mode;
     int result;
+
+    /* If baud_rate is 0, skip SET232C and use SWITCH.X settings */
+    if (baud_rate == 0) {
+        return CHAT_OK;
+    }
 
     /* Build mode word: 8N1 + baud rate */
     mode = RS_MODE_8N1 | baud_to_code(baud_rate);

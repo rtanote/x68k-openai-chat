@@ -44,8 +44,8 @@ int chat_init(const chat_config_t *config)
         buffer_size = CHAT_DEFAULT_BUFSIZE;
     }
 
-    /* Validate parameters */
-    if (baud_rate != 9600 && baud_rate != 19200 && baud_rate != 38400) {
+    /* Validate baud rate: 0 means use SWITCH.X settings */
+    if (baud_rate != 0 && baud_rate != 4800 && baud_rate != 9600 && baud_rate != 19200 && baud_rate != 38400) {
         baud_rate = CHAT_DEFAULT_BAUD;
     }
     if (timeout_sec <= 0) {

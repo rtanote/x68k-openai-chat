@@ -12,6 +12,7 @@ import time
 import threading
 import logging
 from pathlib import Path
+from typing import Optional
 
 import yaml
 import serial
@@ -114,7 +115,7 @@ class ChatBridge:
                 logger.error(f"Error in main loop: {e}")
                 self.send_error(str(e))
 
-    def receive_message(self) -> str | None:
+    def receive_message(self) -> Optional[str]:
         """Read message from serial until ETX."""
         buffer = bytearray()
 

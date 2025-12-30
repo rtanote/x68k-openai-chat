@@ -20,7 +20,7 @@
 
 /* Configuration structure */
 typedef struct {
-    int baud_rate;          /* 9600, 19200, 38400 */
+    int baud_rate;          /* 0=use SWITCH.X, or 4800/9600/19200/38400 */
     int timeout_sec;        /* Receive timeout in seconds */
     size_t buffer_size;     /* Internal buffer size */
 } chat_config_t;

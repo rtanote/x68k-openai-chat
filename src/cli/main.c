@@ -16,6 +16,9 @@
 #include <doslib.h>
 #include "chat.h"
 
+/* Version */
+#define CHAT_VERSION    "1.0.0"
+
 /* Buffer sizes */
 #define INPUT_BUFSIZE   1024
 #define RESPONSE_BUFSIZE 4096
@@ -34,8 +37,10 @@ static void print_usage(void)
     printf("\n");
     printf("Options:\n");
     printf("  -i, --interactive  Enter interactive mode\n");
-    printf("  -b, --baud <rate>  Set baud rate (9600/19200/38400)\n");
+    printf("  -b, --baud <rate>  Set baud rate and init serial (4800/9600/19200/38400)\n");
+    printf("                     Without -b, uses SWITCH.X settings\n");
     printf("  -t, --timeout <s>  Set timeout in seconds (default: 60)\n");
+    printf("  -v, --version      Show version\n");
     printf("  -h, --help         Show this help\n");
     printf("\n");
     printf("Examples:\n");
@@ -126,7 +131,7 @@ int main(int argc, char *argv[])
 {
     int i;
     int interactive = 0;
-    int baud_rate = CHAT_DEFAULT_BAUD;
+    int baud_rate = 0;  /* 0 = use SWITCH.X settings, don't call SET232C */
     int timeout = CHAT_DEFAULT_TIMEOUT;
     const char *message = NULL;
     chat_config_t config;
@@ -136,6 +141,10 @@ int main(int argc, char *argv[])
     for (i = 1; i < argc; i++) {
         if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
             print_usage();
+            return 0;
+        }
+        else if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
+            printf("CHAT.X version %s\n", CHAT_VERSION);
             return 0;
         }
         else if (strcmp(argv[i], "-i") == 0 || strcmp(argv[i], "--interactive") == 0) {
